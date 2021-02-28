@@ -1,0 +1,19 @@
+.table-container {
+    padding: 16px;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: .25rem;
+}
+
+.table-container .show-entries label {
+    text-align: left;
+}
+
+.table-container .show-entries .show-entries-select {
+    width: auto;
+    display: inline;
+}
+
+.table-container .buttons button{
+    margin: 4px;
+}

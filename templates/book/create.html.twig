@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New book - {% endblock %}
+
+{% block body %}
+    {% if authorsNumber == false %}
+    <div class="messages">
+        <div class="message message-danger mb-4 show" id="message">
+            <span>There are no authors registered</span>
+            <button type="button" class="btn-close float-end" data-bs-toggle="collapse" data-bs-target="#message" onclick="this.parent"></button>
+        </div>
+    </div>
+    {% endif %}
+    {% if authors %}
+        <div class="form-container">
+            <h4 class="mb-4">New book</h4>
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-xl-3">
+                <form enctype="multipart/form-data" action="/books" method="POST">
+                    <div class="mb-3">
+                        <label for="book_title" class="form-label">Title</label>
+                        <input type="text" id="book_title" name="book[title]" required="required" maxlength="255" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="book_year" class="form-label">Year of publishment</label>
+                        <input type="number" id="book_year" name="book[year]" required="required" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="book_ISBN" class="form-label">ISBN</label>
+                        <input type="text" id="book_ISBN" name="book[ISBN]" required="required" maxlength="255" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="book_author_id" class="form-label">Author(s)</label>
+                        <select id="book_author_id" name="book[author_id]" required="required" class="form-control">
+                            <option value="0" selected disabled>Choose author</option>
+                            {% for author in authors %}
+                                <option value="{{author.id}}">{{ author.first_name }} {{ author.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="book_cover" class="form-label">Cover Image</label>
+                        <input type="file" id="book_cover" name="book_cover" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

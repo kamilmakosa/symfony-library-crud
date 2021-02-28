@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ book.title }} - {% endblock %}
+
+{% block body %}
+    <div class="table-container">
+        <h4 class="mb-4">Book: {{ book.title }}</h4>
+        <div class="row mb-4">
+            <div class="col-8">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ book.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ book.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Author</th>
+                            <td>{{ book.author }}</td>
+                        </tr>
+                        <tr>
+                            <th>Year of publishment</th>
+                            <td>{{ book.year }}</td>
+                        </tr>
+                        <tr>
+                            <th>ISBN</th>
+                            <td>{{ book.ISBN }}</td>
+                        </tr>
+                        <tr>
+                            <th>Cover</th>
+                            <td>
+                                <a href="{{ asset('covers/' ~ book.coverImage) }}" target="_blank">
+                                    <img width="100px" src="{{ asset('covers/' ~ book.coverImage) }}" />
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="buttons">
+                    <button onclick="location.href = '{{ path('books') }}';" type="button" class="btn btn-primary">Back to list</button>
+                    <button onclick="location.href = '{{ path('book_edit', {'book_id': book.id}) }}';" type="button" class="btn btn-primary">Edit</button>
+                    <button onclick="confirmRedirect('{{ path('book_delete', {'book_id': book.id}) }}')" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

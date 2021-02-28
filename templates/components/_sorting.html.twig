@@ -1,0 +1,27 @@
+<div class="row mb-4">
+    <div class="col-12">
+        <form action="" method="GET" class="show-entries">
+            <label>Sort by
+                <select name="sort_field" class="custom-select custom-select-sm form-control form-control-sm show-entries-select">
+                {% for field_key, field in fields %}
+                    {% if sort.field == field_key %}
+                        <option selected value="{{ field_key }}">{{ field }}</option>
+                    {% else %}
+                        <option value="{{ field_key }}">{{ field }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+                <select name="sort_type" class="custom-select custom-select-sm form-control form-control-sm show-entries-select">
+                {% if sort.type == "asc" %}
+                    <option value="asc" selected>ascending</option>
+                    <option value="desc">descending</option>
+                {% else %}
+                    <option value="asc">ascending</option>
+                    <option value="desc" selected>descending</option>
+                {% endif %}
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm">Sort</button>
+            </label>
+        </form>
+    </div>
+</div>

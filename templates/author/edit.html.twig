@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit author - {% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h4 class="mb-4">Edit author: {{ author.first_name }} {{ author.last_name }}</h4>
+        <div class="row">
+            <div class="col-6">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="author_first_name" class="form-label">First Name</label>
+                    <input type="text" id="author_first_name" class="form-control" name="author[first_name]" value="{{ author.first_name }}">
+                </div>
+                <div class="mb-3">
+                    <label for="author_last_name" class="form-label">Last Name</label>
+                    <input type="text" id="author_last_name" class="form-control" name="author[last_name]" value="{{ author.last_name }}">
+                </div>
+                <div>
+                    <button onclick="location.href = '{{ path('authors') }}';" type="button" class="btn btn-primary">Back to list</button>
+                    <button type="submit" class="btn btn-success">Save changes</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

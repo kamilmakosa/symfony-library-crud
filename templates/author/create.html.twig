@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New author - {% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h4 class="mb-4">New author</h4>
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-6 col-xl-3">
+            <form action="/authors" method="POST">
+                <div class="mb-3">
+                    <label for="author_first_name" class="form-label">First Name</label>
+                    <input type="text" id="author_first_name" class="form-control" name="author[first_name]" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="author_last_name" class="form-label">Last Name</label>
+                    <input type="text" id="author_last_name" class="form-control" name="author[last_name]" placeholder="">
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
